@@ -1,3 +1,5 @@
+
+
 # Turret & Mech Defense Source Code
 
 Hi there! This is the source code repo for a fun tower defense game that I am currently working on.
@@ -87,6 +89,92 @@ The reason why I run the following function :
 `float angularDifferenceBetweenPortalRotations = Quaternion.Angle(playerCamera.rotation, LookPos.transform.rotation);
             Quaternion portalRotationalDifference = Quaternion.AngleAxis(angularDifferenceBetweenPortalRotations, Vector3.up);`
 
-Is to effect the aim constraint object, and reposition it to where the player is looking, which gives the mech its player look reference.
+Is to effect the aim constraint object, and reposition it to where the player is looking, which gives the mech its player look reference. Below is how I organized the different types of turrets that the user has access to.
+## Turret Class Diagram
 
+Currently there are two different types of turrets that the player can build and upgrade. A laser turret and a repeater turret. I have plans on expanding this class to include a new missile launcher turret, as some sort of raycast based turret. They each will derive from the same parent class of turret and each, for now, are planned to be stationary only.
+
+```mermaid
+
+classDiagram
+      Turret <|-- Laser Turret
+      Turret <|-- Repeater Turret
+      Turret <|-- Other New Turrets
+      Turret : +int Health
+      Turret : +int Fire Rate
+	  Turret : +int Detection Radius
+	  Turret : +Damage Amount
+      Turret : +Bool Stationary
+      Turret: +Attacks_Drones()
+      Turret: +Sell()
+	  Turret: +Upgrade()
+	  Turret: +DealDamage(int damage amount)
+	  Turret: +TakeDamage(int damage amount)
+      class Laser Turret{
+          +Projectile based
+          +int Fire Rate 1
+          +Sell value = 10
+      }
+      class Repeater Turret{
+          int Fire Rate = 2
+          Sell Value = 15
+          int Damage Amount x 2
+      }
+      class Other New Turrets{
+          +Can utilize missiles
+          +Raycast based weapons
+      }
+```
+
+
+
+## Turret State Diagram
+
+I prefer to keep my AI agents quite simplistic. Each turret conducts a search function, if they find an enemy drone, they attack it. Once their target has been destroyed, they resume searching. They stop searching for enemies once the game is over.
+
+```mermaid
+stateDiagram
+    [*] --> Search
+    Search --> Attack
+    Attack --> Destroy
+    Destroy --> Search
+    Search --> [*]
+```
+
+## Drones
+
+The drone enemies are straight forward as well. There are currently two different types of enemy behaviors, one where it will only attack the base that the player is trying to defend. The other will only attack turrets.
+
+```mermaid
+
+classDiagram
+      Drone <|-- Small Drone
+      Drone <|-- TurretAttackerDrone
+      Drone <|-- New Drones
+      Drone : + int Health
+      Drone : + int Fire Rate
+      Drone : + int Fire Range
+      Drone : + Transform Target Position
+      Drone : + Rotation Target Rotation
+      Drone: + Attack(int damage amount)
+      Drone: + Explode()
+	  Drone: + DropLoot()
+	  Drone: + TakeDamage(int damage amount)
+      class Small Drone{
+          + Raycast based weapon
+          + int Fire Rate 1
+          + float Probability drop ammo : 25%
+          + float Probability to drop resources : 15%
+          + Chases only after the base
+      }
+      class TurretAttackerDrone{
+          int Fire Rate = 2
+          int Health (doubled that of the small drone)
+          Attacks deal damage to turrets
+          - 0% probability for any loot drops
+      }
+      class New Drones{
+          +New types of weaponry
+      }
+```
 
