@@ -4,11 +4,11 @@ Hi there! This is the source code repo for a fun tower defense game that I am cu
 
 Here's a couple videos showcasing what I have built so far:
 
-Turret Defense Test:
+Turret Defense Test & Mech Tech Demo videos:
 
 [![Turret Defense Test](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DzOmDsLUChCE)](https://www.youtube.com/watch?v=zOmDsLUChCE)
 
-Mech Tech demo : 
+
 [[![Mech Tech VR Demo](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dw0hPq85CXyM)](https://www.youtube.com/watch?v=w0hPq85CXyM)]
 
 
