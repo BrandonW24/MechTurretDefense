@@ -9,7 +9,7 @@ Turret Defense Test:
 [![Turret Defense Test](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DzOmDsLUChCE)](https://www.youtube.com/watch?v=zOmDsLUChCE)
 
 Mech Tech demo : 
-[[![Mech Tech VR Demo](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dw0hPq85CXyM)](https://www.youtube.com/watch?v=w0hPq85CXyM)](https://www.youtube.com/watch?v=w0hPq85CXyM)
+[[![Mech Tech VR Demo](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dw0hPq85CXyM)](https://www.youtube.com/watch?v=w0hPq85CXyM)]
 
 
 ## Why develop this game?
@@ -88,6 +88,5 @@ The reason why I run the following function :
             Quaternion portalRotationalDifference = Quaternion.AngleAxis(angularDifferenceBetweenPortalRotations, Vector3.up);`
 
 Is to effect the aim constraint object, and reposition it to where the player is looking, which gives the mech its player look reference.
-
 
 
